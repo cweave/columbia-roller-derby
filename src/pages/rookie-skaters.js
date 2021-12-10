@@ -6,22 +6,22 @@ import { graphql } from "gatsby"
 import DerbyTable from "../components/table"
 
 const RookieSkaters = props => {
-  const rookies = props.data.allMongodbColumbiarollerderbyRookies.edges
+	const rookies = props.data.allMongodbColumbiarollerderbyRookies.edges
 
-  return (
-    <Layout>
-      <Link to="/">Go back to the homepage</Link>
-      <div className="book-container">
-        <DerbyTable data={rookies} />
-      </div>
-    </Layout>
-  )
+	return (
+		<Layout>
+			<Link to="/">Go back to the homepage</Link>
+			<div className="book-container">
+				<DerbyTable data={rookies} />
+			</div>
+		</Layout>
+	)
 }
 
 export default RookieSkaters
 
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  {
     allMongodbColumbiarollerderbyRookies {
       edges {
         node {
