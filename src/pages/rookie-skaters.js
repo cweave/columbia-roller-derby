@@ -5,8 +5,8 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import DerbyTable from "../components/table"
 
-const RookieSkaters = props => {
-	const rookies = props.data.allMongodbColumbiarollerderbyRookies.edges
+const RookieSkaters = ({ data }) => {
+	const rookies = data.allMongodbColumbiarollerderbyRookies.edges
 
 	return (
 		<Layout>
@@ -20,7 +20,7 @@ const RookieSkaters = props => {
 
 export default RookieSkaters
 
-export const query = graphql`
+export const pageQuery = graphql`
   query rookiesQuery {
 	allMongodbColumbiarollerderbyRookies {
 		edges {
