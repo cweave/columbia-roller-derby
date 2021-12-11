@@ -11,7 +11,7 @@ exports.createPages = async ({ actions }) => {
 exports.sourceNodes = ({ actions }) => {
 	const { createTypes } = actions;
 	const typeDefs = `
-		type Rookies implements Node {
+		type allMongodbColumbiarollerderbyRookies implements Node {
 			id: ID!,
 			name: String,
 			derby_name: String,
