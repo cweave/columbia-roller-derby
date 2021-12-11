@@ -29,6 +29,7 @@
 	},
 	"devDependencies": {
 		"gatsby-plugin-netlify": "^4.0.0-next.0",
+		"netlify-cli": "^8.0.20",
 		"prettier": "^2.5.1"
 	},
 	"keywords": [
