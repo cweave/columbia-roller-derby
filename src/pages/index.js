@@ -1,15 +1,18 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import NewSkaterForm from "../components/new-skater-form"
 
 const IndexPage = () => {
+  fetch("http://localhost:3001/api/")
+    .then((data) => data.json())
+    .then((data) => {
+      console.log("dattttta", data)
+    })
   return (
     <Layout>
       <div className="book-container">
-        <h1>Columbia Roller Derby</h1>
-        <Link to="rookie-skaters">Rookie Skaters</Link>
+        <h1>New Columbia Skaters</h1>
 
         <NewSkaterForm />
       </div>
