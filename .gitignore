@@ -75,5 +75,3 @@ yarn-error.log
 netlify/functions/gatsby
 # @netlify/plugin-gatsby ignores end
 
-config/
-config/database.config

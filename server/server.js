@@ -1,46 +1,26 @@
 const express = require("express")
-const gatsby = require("gatsby-plugin-nodejs");
-const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
 const cors = require("cors")
 const MongoClient = require("mongodb").MongoClient
-const port = 3000
 const routes = require("../routes")
-const dbConfig = require("../config/database.config")
-// parse requests of content-type - application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: true }))
 
-// // parse requests of content-type - application/json
-// app.use(bodyParser.json())
-// app.use(
-//   cors({
-//     /** Use this when web frontend / production **/
-//     // origin: 'https://example.com',
+const uri = process.env.GATSBY_CRD_DATABASE_NAME
+const client = new MongoClient(`${uri}`, { useNewUrlParser: true })
 
-//     /** Use this when local frontend / development **/
-//     origin: "http://localhost:8000",
-//   })
-// )
+client.connect((err) => {
+  if (err) {
+    throw err
+  }
+  const app = express()
+  app.use(
+    cors({
+      origin: "http://localhost:8000",
+    })
+  )
 
-// Configuring the database
+  app.use(express.json())
+  app.use("/api", routes)
 
-mongoose.connect(dbConfig.url, { useNewUrlParser: true }).then(() => {
-	const app = express()
-	gatsby.prepare({ app }, () => {
-		app.use(
-			cors({
-				/** Use this when web frontend / production **/
-				// origin: 'https://example.com',
-
-				/** Use this when local frontend / development **/
-				origin: "http://localhost:8000",
-			})
-		)
-		app.use(express.json()) // new
-		app.use("/api", routes)
-	})
-
-	app.listen(3001, () => {
-		console.log("Server has started!")
-	})
+  app.listen(3001, () => {
+    console.log("Server has started!")
+  })
 })
