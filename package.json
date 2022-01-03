@@ -34,6 +34,7 @@
 		"sync-request": "^6.1.0"
 	},
 	"devDependencies": {
+		"cross-env": "^7.0.3",
 		"gatsby-plugin-netlify": "^4.0.0-next.0",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.5.1"
@@ -45,7 +46,7 @@
 		"server": "node server.js",
 		"serve": "npm run server && gatsby serve",
 		"start-js": "gatsby develop",
-		"backend-start": "node server/server.js",
+		"backend-start": "cross-env NODE_ENV=development node server/server.js",
 		"start": "concurrently \"npm-run-all -p backend-start start-js\"",
 		"clean": "gatsby clean",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
